@@ -1,23 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { AppLayout, LoginLayout } from '../layouts';
 import PrivateRoute from './PrivateRoute';
 
-class MainRoute extends Component {
-  state = {
-    isAuthenticated: false,
-  };
+const LoginLayout = lazy(() => import('../layouts/LoginLayout'));
+const AppLayout = lazy(() => import('../layouts/AppLayout'));
 
+class MainRoute extends Component {
   render() {
+    const { isAuthenticated } = this.props;
     return (
       <Router>
-        <Switch>
-          <Route path="/login" component={LoginLayout} />
-          <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/" component={AppLayout} />
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path="/login" component={LoginLayout} />
+            <PrivateRoute path="/" component={AppLayout} isAuthenticated={isAuthenticated} />
+          </Switch>
+        </Suspense>
       </Router>
     );
   }
 }
 
-export default MainRoute;
+const mapStateToProps = state => ({
+  isAuthenticated: state.login.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(MainRoute);
