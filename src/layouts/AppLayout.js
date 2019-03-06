@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 import NavbarComponent from '../components/share/NavbarComponent';
-import ArticleListContainer from '../containers/articles/ArticleListContainer';
+import ArticleContainer from '../containers/articles/ArticleContainer';
 
 const { Header, Content, Footer } = Layout;
 
@@ -12,7 +12,7 @@ const AppLayout = props => (
     </Header>
     <Content style={{ padding: '50px' }}>
       <div style={{ background: '#fff', padding: 24 }}>
-        <ArticleListContainer />
+        <ArticleContainer />
       </div>
     </Content>
     <Footer style={{ textAlign: 'center' }}>footer</Footer>
