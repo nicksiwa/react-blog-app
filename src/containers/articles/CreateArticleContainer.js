@@ -10,8 +10,4 @@ class CreateArticleContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isOpenDrawer: state.article.isOpenDrawer,
-});
-
-export default connect(mapStateToProps)(CreateArticleContainer);
+export default connect()(CreateArticleContainer);

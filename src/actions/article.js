@@ -29,10 +29,17 @@ export const createArticleFail = err => ({
   payload: err,
 });
 
-export const openArticleDrawer = () => ({
-  type: ARTICLE.OPEN_DRAWER,
+export const deleteArticlePending = data => ({
+  type: ARTICLE.DELETE_PENDING,
+  payload: data,
 });
 
-export const closeArticleDrawer = () => ({
-  type: ARTICLE.CLOSE_DRAWER,
+export const deleteArticleSuccess = id => ({
+  type: ARTICLE.DELETE_SUCCESS,
+  payload: id,
+});
+
+export const deleteArticleFail = err => ({
+  type: ARTICLE.DELETE_FAIL,
+  payload: err,
 });

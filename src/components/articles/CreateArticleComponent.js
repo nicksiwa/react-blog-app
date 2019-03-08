@@ -1,21 +1,19 @@
 import React from 'react';
-import { Drawer } from 'antd';
 import ArticleFormContainer from '../../containers/articles/ArticleFormContainer';
 import SubmitArticleFormContainer from '../../containers/articles/SubmitArticleFormContainer';
+import DrawerContainer from '../../containers/share/DrawerContainer';
 
 const CreateArticleComponent = (props) => {
-  const { isOpenDrawer, handleCloseDrawer, onSubmit } = props;
+  const { onSubmit } = props;
 
   return (
-    <Drawer
+    <DrawerContainer
       title="Article"
-      visible={isOpenDrawer}
-      onClose={handleCloseDrawer()}
       width={480}
     >
       <ArticleFormContainer onSubmit={onSubmit} />
       <SubmitArticleFormContainer />
-    </Drawer>
+    </DrawerContainer>
   );
 };
 

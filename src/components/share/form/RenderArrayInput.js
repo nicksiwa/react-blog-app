@@ -6,6 +6,7 @@ import Input from './RenderInput';
 
 const RenderArrayInput = (props) => {
   const { fields, addLabel } = props;
+
   return (
     <div>
       <Button type="default" onClick={() => fields.push()}>{addLabel}</Button>

@@ -4,7 +4,7 @@ import { Menu } from 'antd';
 
 const NavbarComponent = props => (
   <Menu
-    theme="dark"
+    theme="light"
     mode="horizontal"
     defaultSelectedKeys={['1']}
     style={{ lineHeight: '64px' }}

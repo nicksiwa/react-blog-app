@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Tag } from 'antd';
+import { Tag, Button } from 'antd';
 import ArticleListComponent from '../../components/articles/ArticleListComponent';
-import { fetchArticlesPending } from '../../actions/article';
+import { fetchArticlesPending, deleteArticlePending } from '../../actions/article';
 
 class ArticleListContainer extends Component {
   componentDidMount() {
@@ -36,6 +36,16 @@ class ArticleListContainer extends Component {
           </span>
         ),
       },
+      {
+        title: 'Action',
+        key: 'action',
+        render: data => (
+          <span>
+            <Button>Edit</Button>
+            <Button type="danger" onClick={() => this.props.handleDeleteArticle(data.id)}>Delete</Button>
+          </span>
+        ),
+      },
     ];
 
     return (
@@ -51,6 +61,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleFetchArticles: () => dispatch(fetchArticlesPending()),
+  handleDeleteArticle: id => dispatch(deleteArticlePending(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleListContainer);

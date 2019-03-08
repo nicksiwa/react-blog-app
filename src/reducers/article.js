@@ -11,11 +11,26 @@ function articleReducer(state = init, action) {
     case ARTICLE.FETCH_PENDING:
       return { ...state, isLoading: true };
     case ARTICLE.FETCH_SUCCESS:
-      return { ...state, isLoading: false, articles: [...state.articles, ...action.payload] };
-    case ARTICLE.OPEN_DRAWER:
-      return { ...state, isOpenDrawer: true };
-    case ARTICLE.CLOSE_DRAWER:
-      return { ...state, isOpenDrawer: false };
+      return {
+        ...state,
+        isLoading: false,
+        articles: [...state.articles, ...action.payload],
+      };
+    case ARTICLE.CREATE_PENDING:
+      return { ...state, isLoading: true };
+    case ARTICLE.CREATE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        articles: [...state.articles, { ...action.payload }],
+      };
+    case ARTICLE.DELETE_PENDING:
+      return { ...state };
+    case ARTICLE.DELETE_SUCCESS:
+      return {
+        ...state,
+        articles: state.articles.filter(article => article.id !== action.payload),
+      };
     default:
       return state;
   }
