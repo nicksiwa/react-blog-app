@@ -43,3 +43,35 @@ export const deleteArticleFail = err => ({
   type: ARTICLE.DELETE_FAIL,
   payload: err,
 });
+
+export const updateArticlePending = data => ({
+  type: ARTICLE.UPDATE_PENDING,
+  payload: data,
+});
+
+export const updateArticleSuccess = data => ({
+  type: ARTICLE.UPDATE_SUCCESS,
+});
+
+export const updateArticleFail = err => ({
+  type: ARTICLE.UPDATE_FAIL,
+  payload: err,
+});
+
+export const updateArticleCancel = () => ({
+  type: ARTICLE.UPDATE_CANCEL,
+});
+
+export const getArticleByIdPending = id => ({
+  type: ARTICLE.GET_BY_ID_PENDING,
+  payload: id,
+});
+
+export const getArticleByIdSuccess = data => ({
+  type: ARTICLE.GET_BY_ID_SUCCESS,
+  payload: data,
+});
+
+export const getArticleByIdFail = () => ({
+  type: ARTICLE.GET_BY_ID_FAIL,
+});

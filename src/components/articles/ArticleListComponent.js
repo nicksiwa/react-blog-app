@@ -8,6 +8,7 @@ const ArticleListComponent = props => (
     columns={props.columns}
     loading={props.isLoading}
     dataSource={props.articles}
+    className="table"
   />
 );
 

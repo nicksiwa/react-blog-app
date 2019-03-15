@@ -11,8 +11,12 @@ class SubmitArticleFormContainer extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isEditing: state.article.isEditing,
+});
+
 const mapDispatchToProps = dispatch => ({
   onSubmit: () => dispatch(submit('article')),
 });
 
-export default connect(null, mapDispatchToProps)(SubmitArticleFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitArticleFormContainer);

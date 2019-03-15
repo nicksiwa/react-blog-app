@@ -1,8 +1,9 @@
+/* eslint-disable react/no-array-index-key */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tag, Button } from 'antd';
 import ArticleListComponent from '../../components/articles/ArticleListComponent';
-import { fetchArticlesPending, deleteArticlePending } from '../../actions/article';
+import { fetchArticlesPending, deleteArticlePending, getArticleByIdPending } from '../../actions/article';
 
 class ArticleListContainer extends Component {
   componentDidMount() {
@@ -32,7 +33,7 @@ class ArticleListContainer extends Component {
         key: 'tags',
         render: tags => (
           <span>
-            {tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
+            {tags.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
           </span>
         ),
       },
@@ -40,8 +41,8 @@ class ArticleListContainer extends Component {
         title: 'Action',
         key: 'action',
         render: data => (
-          <span>
-            <Button>Edit</Button>
+          <span className="table-action">
+            <Button onClick={() => this.props.handleGetArticleById(data.id)}>Edit</Button>
             <Button type="danger" onClick={() => this.props.handleDeleteArticle(data.id)}>Delete</Button>
           </span>
         ),
@@ -62,6 +63,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleFetchArticles: () => dispatch(fetchArticlesPending()),
   handleDeleteArticle: id => dispatch(deleteArticlePending(id)),
+  handleGetArticleById: id => dispatch(getArticleByIdPending(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleListContainer);

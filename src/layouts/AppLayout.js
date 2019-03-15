@@ -6,16 +6,14 @@ import ModalContainer from '../containers/share/ModalContainer';
 
 const { Content, Footer } = Layout;
 
-const AppLayout = props => (
-  <Layout className="layout">
+const AppLayout = () => (
+  <Layout className="appLayout">
     <NavbarComponent />
-    <Content style={{ padding: '50px' }}>
-      <div style={{ background: '#fff', padding: 24 }}>
-        <ArticleContainer />
-        <ModalContainer />
-      </div>
+    <Content className="appLayout-content">
+      <ArticleContainer />
+      <ModalContainer />
     </Content>
-    <Footer style={{ textAlign: 'center' }}>footer</Footer>
+    <Footer>footer</Footer>
   </Layout>
 );
 

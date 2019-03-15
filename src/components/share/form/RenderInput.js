@@ -1,13 +1,19 @@
 import React from 'react';
-import { Input } from 'antd';
+import { Input, Form } from 'antd';
 
 const RenderInput = (props) => {
-  const { hidden } = props;
+  const { label, hidden, meta: { error, touched } } = props;
   return (
-    <Input
-      {...props.input}
-      hidden={hidden}
-    />
+    <Form.Item
+      label={label}
+      validateStatus={touched && error ? 'error' : ''}
+      help={touched && error}
+    >
+      <Input
+        {...props.input}
+        hidden={hidden}
+      />
+    </Form.Item>
   );
 };
 

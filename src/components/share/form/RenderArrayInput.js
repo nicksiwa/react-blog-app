@@ -1,14 +1,23 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Form } from 'antd';
 import { Field } from 'redux-form';
 import Input from './RenderInput';
 
 const RenderArrayInput = (props) => {
-  const { fields, addLabel } = props;
+  const {
+    label,
+    fields,
+    addLabel,
+    meta: { error, submitFailed },
+  } = props;
 
   return (
-    <div>
+    <Form.Item
+      label={label}
+      validateStatus={submitFailed && error ? 'error' : ''}
+      help={submitFailed && error}
+    >
       <Button type="default" onClick={() => fields.push()}>{addLabel}</Button>
       {fields.map((name, index) => (
         <span key={index}>
@@ -20,7 +29,7 @@ const RenderArrayInput = (props) => {
           <Button type="danger" onClick={() => fields.remove(index)}>Remove</Button>
         </span>
       ))}
-    </div>
+    </Form.Item>
   );
 };
 

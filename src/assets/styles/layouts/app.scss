@@ -1,0 +1,11 @@
+#root, .container, .appLayout {
+  height: 100%;
+}
+
+.appLayout {
+  &-content {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+  }
+}
